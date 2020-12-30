@@ -1,16 +1,15 @@
 // JavaScript source code
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    }
-}
+var latCoord;
+var longCoord;
 
-function showPosition(position) {
-    var latlon = position.coords.latitude + "," + position.coords.longitude;
-    return latlon;
-}
+navigator.geolocation.getCurrentPosition(function (position) {
+    return {
+        latCoord: position.coords.latitude,
+        longCoord: position.coords.longitude,
+    };
+});
 
-console.log(getLocation());
+console.log(latCoord);
 
 
 var map = document.getElementById("map");
